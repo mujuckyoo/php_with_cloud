@@ -2,6 +2,11 @@
 <meta charset = "utf-8"/>
 <?php
     if (!isset($_COOKIE['user_id']) || !isset($_COOKIE['user_pw']) ) {
+        echo "<script>
+        alert('세션이 만료되거나 없습니다');
+        history.back();
+        </script>
+        ";
         echo "<meta http-equiv ='refresh' content='0;url=login.php'>";
         exit;
     }

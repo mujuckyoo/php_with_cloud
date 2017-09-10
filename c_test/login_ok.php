@@ -13,6 +13,13 @@ if (!isset($member[$_GET['user_id']])) {
         </script>
         ";
 }
+if ($member[$_GET['user_id']]['pw']==$_GET['user_pw']) {
+    
+        echo "
+            welcome
+            
+            ";
+    }
 
     if (isset($_GET['user_id']) && isset($_GET['user_pw'])) {
         echo 'ID : ';

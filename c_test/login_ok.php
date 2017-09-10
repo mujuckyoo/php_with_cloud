@@ -27,8 +27,10 @@ if ($member[$user_id]['pw']!=$_GET['user_pw']) {
     exit;
     }
 
-setcookie('user_id', $user_id, time() + 600);
-setcookie('user_pw', $user_pw, time() + 600);
+setcookie('user_id', $user_id, time() + 600, '/');
+setcookie('user_pw', $user_pw, time() + 600, '/');
+
+echo '쿠키생성완료';
 
     if (isset($_GET['user_id']) && isset($_GET['user_pw'])) {
         echo 'ID : ';

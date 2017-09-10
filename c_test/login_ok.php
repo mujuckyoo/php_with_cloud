@@ -1,3 +1,4 @@
+<meta charset = "utf-8"/>
 <?php
 $member = array(
     'user1' => array('pw' => 'ppp1', 'name' => 'NO1'),
@@ -13,12 +14,13 @@ if (!isset($member[$_GET['user_id']])) {
         </script>
         ";
 }
-if ($member[$_GET['user_id']]['pw']==$_GET['user_pw']) {
+if ($member[$_GET['user_id']]['pw']!=$_GET['user_pw']) {
     
-        echo "
-            welcome
-            
-            ";
+    echo "<script>
+    alert('비밀번호가 일치하지 않습니다');
+    history.back();
+    </script>
+    ";
     }
 
     if (isset($_GET['user_id']) && isset($_GET['user_pw'])) {

@@ -39,7 +39,7 @@
         #echo "</pre>";
 
         header('Content-Type: application/json; charset=utf8');
-        $json = json_encode(array("result"=>$result_array), JSON_UNESCAPED_UNICODE);
+        $json = json_encode(array("result"=>$result_array), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
         echo $json;
 //pre를 붙임으로서 엔터와 스페이스를 정상적으로 출력
     } else {

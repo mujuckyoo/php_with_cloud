@@ -9,11 +9,11 @@ class DB_Connect {
 
     // Connecting to database
     public function connect() {
-        require_once 'include/Config.php';
+        require_once ($_SERVER[‘DOCUMENT_ROOT’] . “/Config.php”);
         
         // Connecting to mysql database
         $this->conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
-        
+        // -> 이거는 java에서 . 을 의미한다. this.conn 모클래스의 변수
         // return database handler
         return $this->conn;
     }

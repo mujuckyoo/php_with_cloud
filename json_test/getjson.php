@@ -1,6 +1,6 @@
 <?php
 
-    $link = mysqli_connect("localhost", "root", "toor", "db");
+    $link = mysqli_connect("localhost", "root", "root", "db");
 
     if(!$link) {
         echo "MySQL 접속 에러 : ";

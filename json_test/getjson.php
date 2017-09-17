@@ -1,6 +1,9 @@
+<!DOCTYPE html>
+<meta charset= "urf-8" />
+
 <?php
 
-    $link = mysqli_connect("localhost", "root", "root", "db");
+    $link = mysqli_connect("localhost", "root", "dbwpdnr*6", "db");
 
     if(!$link) {
         echo "MySQL 접속 에러 : ";

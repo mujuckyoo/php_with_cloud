@@ -21,8 +21,7 @@
 
     $raw_result = mysqli_query($link, $sql_query);
     //link에 sql_quer를 던져라
-
-    echo $raw_result;
+    //string 변환은 (String)으로
     echo "<br>";
     $result_array = array();
     if($raw_result) {
@@ -43,6 +42,9 @@
 
         echo print_r($result_array);
 
+    } else {
+        echo "SQL query run error";
+        echo mysqli_error($link);
     }
 
 

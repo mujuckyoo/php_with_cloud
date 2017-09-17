@@ -37,8 +37,10 @@
 
         }
 
-        echo print_r($result_array);
-
+        echo "<pre>";
+        print_r($result_array);
+        echo "</pre>";
+//pre를 붙임으로서 엔터와 스페이스를 정상적으로 출력
     } else {
         echo "SQL query run error";
         echo mysqli_error($link);

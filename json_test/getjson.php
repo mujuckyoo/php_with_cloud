@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<meta charset= "utf-8" />
 
 <?php
 
@@ -40,6 +38,10 @@
         echo "<pre>";
         print_r($result_array);
         echo "</pre>";
+
+        header('Content-Type: application/json; charset=utf8');
+        $json = json_encode(array("webnautes"=>$result_array), JSON_PRETTY_PRINT+JSON_UNESCAPED_UNICODE);
+        echo $json;
 //pre를 붙임으로서 엔터와 스페이스를 정상적으로 출력
     } else {
         echo "SQL query run error";

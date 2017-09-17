@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<meta charset= "urf-8" />
+<meta charset= "utf-8" />
 
 <?php
 

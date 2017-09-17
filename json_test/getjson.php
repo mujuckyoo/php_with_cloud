@@ -14,7 +14,7 @@
     //엑시트는 그만하고 나와 뒤에코드는 무시해
     }
 
-    echo "MySQL 접속 완료";
+    //echo "MySQL 접속 완료";
     mysqli_set_charset($link,"utf8");
 
     $sql_query = "select * from Person";
@@ -37,17 +37,12 @@
 
         }
 
-        echo $result_array;
-        echo "<br>";
-
         echo print_r($result_array);
 
     } else {
         echo "SQL query run error";
         echo mysqli_error($link);
     }
-
-
 
     mysqli_close($link);
     

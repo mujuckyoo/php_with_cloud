@@ -42,7 +42,7 @@ class DB_Functions {
             $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
-            $user = $stmt->get_result()->fetch_assoc();
+            $user = $stmt->fetch();
             $stmt->close();
 
             return $user;
@@ -59,9 +59,9 @@ class DB_Functions {
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
 
         $stmt->bind_param("s", $email);
-
-        if ($stmt->execute()) {
-            $user = $stmt->get_result()->fetch_assoc();
+        $result = $stmt->execute();
+        if ($result) {
+            $user = $stmt->fetch();
             $stmt->close();
 
             // verifying user password

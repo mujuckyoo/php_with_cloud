@@ -39,20 +39,18 @@ class DB_Functions {
 
         // check for successful store
         if ($result) {
-            $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
+            $stmt = $this->conn->prepare("SELECT unique_id, name, email, created_at, updated_at FROM users WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
-            $stmt->bind_result($uuid, $name, $email, $encrypted_password, $salt, $created_at);
+            $stmt->bind_result($unique_id, $name, $email, $created_at, $updated_at);
             $user = array();
             while($stmt->fetch()) {
                 $tmp = array();
-                $tmp["unique_id"] = $uuid;
-                $tmp["user"]["name"] = $name;
-                $tmp["user"]["email"] = $email;
-                $tmp["user"]["encrypted_password"] = $encrypted_password;
-                $tmp["user"]["salt"] = $salt;
-                $tmp["user"]["created_at"] = $created_at;
-                $tmp["user"]["updated_at"] = $updated_at;
+                $tmp["unique_id"] = $unique_id;
+                $tmp["name"] = $name;
+                $tmp["email"] = $email;
+                $tmp["created_at"] = $created_at;
+                $tmp["updated_at"] = $updated_at;
                 array_push($user, $tmp);
             }
             $stmt->close();

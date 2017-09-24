@@ -20,7 +20,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     // get the user by email and password
     $user = $db->getUserByEmailAndPassword($email, $password);
 
-    if ($user != false) {
+    if ($user != NULL) {
         // use is found
         $response["error"] = FALSE;
         $response["uid"] = $user["unique_id"];

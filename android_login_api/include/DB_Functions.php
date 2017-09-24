@@ -42,7 +42,17 @@ class DB_Functions {
             $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
-            $user = $stmt->fetch();
+            $stmt->bind_result($uuid, $name, $email, $encrypted_password, $salt);
+            $user = array();
+            while($stmt->fetch()) {
+                $tmp = array();
+                $tmp["uuid"] = $uuid;
+                $tmp["name"] = $name;
+                $tmp["email"] = $email;
+                $tmp["encrypted_password"] = $encrypted_password;
+                $tmp["salt"] = $salt;
+                array_push($user, $tmp);
+            }
             $stmt->close();
 
             return $user;

@@ -73,7 +73,7 @@ class DB_Functions {
                 // user authentication details are correct
                 return $user;
             } else {
-                return $user;
+                return NULL;
             }
 
         } else {

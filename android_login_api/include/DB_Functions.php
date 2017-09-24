@@ -29,8 +29,8 @@ class DB_Functions {
     public function storeUser($name, $email, $password) {
         $uuid = uniqid('', true);
         $hash = $this->hashSSHA($password);
-        $encrypted_password = $hash["encrypted"]; // encrypted password
-        $salt = $hash["salt"]; // salt
+        $encrypted_password = $hash['encrypted']; // encrypted password
+        $salt = $hash['salt']; // salt
 
         $stmt = $this->conn->prepare("INSERT INTO users(unique_id, name, email, encrypted_password, salt, created_at) VALUES(?, ?, ?, ?, ?, NOW())");
         $stmt->bind_param("sssss", $uuid, $name, $email, $encrypted_password, $salt);
@@ -67,12 +67,15 @@ class DB_Functions {
             // verifying user password
             $salt = $user['salt'];
             $encrypted_password = $user['encrypted_password'];
-            $hash = $this->hashSSHA($password);
+            $hash = $this->checkhashSSHA($salt, $password);
             // check for password equality
-            if ($encrypted_password == $hash['encrypted']) {
+            if ($encrypted_password == $hash) {
                 // user authentication details are correct
                 return $user;
+            } else {
+                return $user;
             }
+
         } else {
             return NULL;
         }

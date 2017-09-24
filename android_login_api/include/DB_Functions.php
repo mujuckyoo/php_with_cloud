@@ -59,9 +59,10 @@ class DB_Functions {
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = ?");
 
         $stmt->bind_param("s", $email);
-        $result = $stmt->execute();
+        
 
-        if ($result) {
+        if ($stmt->execute()) {
+            $stmt->bind_result($uuid, $name, $email, $encrypted_password, $salt);
             $user = $stmt->fetch();
             $stmt->close();
 

@@ -62,7 +62,7 @@ class DB_Functions {
         $result = $stmt->execute();
 
         if ($result) {
-            $user = $stmt->fetch_array();
+            $user = $stmt->fetch();
             $stmt->close();
 
             // verifying user password

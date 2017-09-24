@@ -67,9 +67,9 @@ class DB_Functions {
             // verifying user password
             $salt = $user['salt'];
             $encrypted_password = $user['encrypted_password'];
-            $hash = $this->checkhashSSHA($salt, $password);
+            $hash = $this->hashSSHA($password);
             // check for password equality
-            if ($encrypted_password == $hash) {
+            if ($encrypted_password == $hash['encrypted']) {
                 // user authentication details are correct
                 return $user;
             }

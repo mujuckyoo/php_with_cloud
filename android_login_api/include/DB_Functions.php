@@ -77,7 +77,7 @@ class DB_Functions {
             }
 
         } else {
-            return NULL;
+            return $user;
         }
     }
 
